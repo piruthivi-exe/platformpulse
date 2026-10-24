@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="PlatformPulse is a demo for quick railway platform lookup and community-assisted updates.">
+  <title>PlatformPulse — Railway Platform Alerts</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="PlatformPulse home"><span class="brand-icon">↗</span> PlatformPulse</a>
+    <span class="tag">PORTFOLIO PROJECT</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span class="pulse"></span> LESS PLATFORM CONFUSION</div>
+      <h1>Know your platform.<br><span>Move with confidence.</span></h1>
+      <p class="intro">Look up demo train information, check when it was updated, and share a platform sighting with other passengers.</p>
+      <div class="searchbar">
+        <span aria-hidden="true">⌕</span>
+        <input id="search" type="search" placeholder="Train number, train name or station…" aria-label="Search trains">
+        <button id="searchBtn">Search</button>
+      </div>
+      <p class="hint">Try 12657, 12658, 12007, MAS or SBC.</p>
+    </section>
+
+    <section class="notice" role="note">
+      <span class="notice-icon">!</span>
+      <div><strong>Demo data — not live railway information</strong><p>Platform assignments can change. Always confirm on official station displays and announcements before boarding.</p></div>
+    </section>
+
+    <section class="section-head">
+      <div><p class="eyebrow">TRAIN LOOKUP</p><h2>Platform board</h2></div>
+      <span id="resultCount" class="count">Loading…</span>
+    </section>
+    <div id="trainList" class="train-grid" aria-live="polite"></div>
+    <div id="empty" class="empty hidden">No matching trains. Try a train number or station code.</div>
+
+    <section class="report-layout">
+      <div class="report-copy">
+        <p class="eyebrow">COMMUNITY SIGNAL</p>
+        <h2>At the station right now?</h2>
+        <p>Submit what you see on the station display. Reports are labelled unverified, so passengers can distinguish community input from official data.</p>
+        <div class="mini-stat"><span class="stat-dot"></span><span>Transparent timestamps · Unverified reports clearly labelled</span></div>
+      </div>
+      <form id="reportForm" class="report-form">
+        <label>Train number<input name="trainNumber" inputmode="numeric" pattern="[0-9]{4,6}" placeholder="e.g. 12657" required></label>
+        <label>Station name or code<input name="station" placeholder="e.g. Chennai Central / MAS" required maxlength="80"></label>
+        <label>Platform shown<input name="platform" placeholder="e.g. 4" required maxlength="12"></label>
+        <label>Your name (optional)<input name="reporter" placeholder="Passenger" maxlength="40"></label>
+        <button class="submit-btn" type="submit">Submit sighting <span>→</span></button>
+        <p id="formMessage" class="form-message" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="section-head recent-head">
+      <div><p class="eyebrow">COMMUNITY</p><h2>Recent sightings</h2></div>
+      <button id="refreshReports" class="text-button">Refresh ↻</button>
+    </section>
+    <div id="reportsList" class="reports-list"><p class="muted">No reports submitted in this session yet.</p></div>
+
+    <section class="how">
+      <p class="eyebrow">THE IDEA</p>
+      <h2>Useful updates, without false certainty.</h2>
+      <div class="how-grid">
+        <article><span>01</span><h3>Search</h3><p>Find a train or station in seconds.</p></article>
+        <article><span>02</span><h3>Check freshness</h3><p>See the update timestamp and source label.</p></article>
+        <article><span>03</span><h3>Share carefully</h3><p>Passenger sightings help, but are never presented as official confirmation.</p></article>
+      </div>
+    </section>
+  </main>
+  <footer><span>PlatformPulse</span><span>Built with Node.js · Express · HTML · CSS · JavaScript</span></footer>
+  <script src="/app.js"></script>
+</body>
+</html>
